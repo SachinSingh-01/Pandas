@@ -1,34 +1,55 @@
-'''1.Create a DataFrame with:
-# Name: ["A", "B", "C"]
-# Age: [20, 25, 30]'''
-# import pandas as pd
-# name=["A", "B", "C"]
-# age=[20, 25, 30]
-# data=pd.DataFrame(name,age)
-# print(data)
-
-'''2.Print only the Age column'''
-# import pandas as pd
-# name=["A", "B", "C"]
-# age=[20, 25, 30]
-# print("Age",age)
-
-'''3.Create a Series of marks:
-[90, 80, 85]'''
-# import pandas as pd
-# series=pd.Series([90,80,85])
-# print(series)
-
-'''4.Find the maximum age'''
+# Question 1: Create a DataFrame with Name and Age
 import pandas as pd
-age=[20, 25, 30]
-df=pd.DataFrame(age,columns=["age"])
-max_age=df["age"].max()
+name = ["A", "B", "C"]
+age = [20, 25, 30]
+df = pd.DataFrame({'Name': name, 'Age': age})
+print(df)
+
+# Question 2: Print only the Age column
+print(df['Age'])
+print()
+
+# Question 3: Create a Series of marks
+marks = pd.Series([90, 80, 85])
+print(marks)
+print()
+
+# Question 4: Find the maximum age
+max_age = df['Age'].max()
 print(max_age)
+print()
 
-'''5.Find the minimum age'''
-import pandas as pd
-age=[20, 25, 30]
-df=pd.DataFrame(age,columns=["age"])
-min_age=df["age"].min()
+# Question 5: Find the minimum age
+min_age = df['Age'].min()
 print(min_age)
+print()
+
+# Question 6: Use .describe() on your DataFrame
+print(df.describe())
+print()
+
+# Question 7: Add a new column Salary
+salary = [20000, 30000, 40000]
+df['Salary'] = salary
+print(df)
+print()
+
+# Question 8: Select multiple columns: Name and Salary
+print(df[['Name', 'Salary']])
+print()
+
+# Question 9: Print first 2 rows
+print(df.head(2))
+
+# Question 10:Print last 2 rows
+print(df.tail(2))
+
+# Question 11:Show people with Age > 22
+age_greater=df[df["Age"]>22]
+print("age_greater")
+print(age_greater)
+
+# Question 11:Show people with Salary > 25000
+salary_greater=df[df["Salary"]>25000]
+print("More salary")
+print(salary_greater)
