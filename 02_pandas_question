@@ -1,0 +1,34 @@
+'''1.Create a DataFrame with:
+# Name: ["A", "B", "C"]
+# Age: [20, 25, 30]'''
+# import pandas as pd
+# name=["A", "B", "C"]
+# age=[20, 25, 30]
+# data=pd.DataFrame(name,age)
+# print(data)
+
+'''2.Print only the Age column'''
+# import pandas as pd
+# name=["A", "B", "C"]
+# age=[20, 25, 30]
+# print("Age",age)
+
+'''3.Create a Series of marks:
+[90, 80, 85]'''
+# import pandas as pd
+# series=pd.Series([90,80,85])
+# print(series)
+
+'''4.Find the maximum age'''
+import pandas as pd
+age=[20, 25, 30]
+df=pd.DataFrame(age,columns=["age"])
+max_age=df["age"].max()
+print(max_age)
+
+'''5.Find the minimum age'''
+import pandas as pd
+age=[20, 25, 30]
+df=pd.DataFrame(age,columns=["age"])
+min_age=df["age"].min()
+print(min_age)
