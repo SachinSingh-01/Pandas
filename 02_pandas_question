@@ -81,3 +81,9 @@ df = pd.DataFrame({
     "Salary": [10000, 20000, None]
 })
 print(df)
+
+# Question 18:Display the first 5 rows
+print(df.head(2))
+
+# Question 19:Check the data types of all columns
+print(df.dtypes)
