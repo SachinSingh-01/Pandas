@@ -74,33 +74,63 @@
 # print(sort_data)
 
 # Question 17
+# import pandas as pd
+# df = pd.DataFrame({
+#     "Name": ["A", "B", "C"],
+#     "Age": [20, None, 30],
+#     "Salary": [None, 20000, None],
+#     "Sex": ["Male","Female","Female"]
+# })
+# print(df)
+
+# # Question 18:Display the first 5 rows
+# # print(df.head(2))
+
+# # Question 19:Check the data types of all columns
+# # print(df.dtypes)
+
+# # Question 20:Get full information about the dataset (rows, columns, null values)
+# # print(df.info())
+
+# # Question 21:Identify which column has missing values
+# df.isna().any()
+
+# # Question 22:Find Total number of rows and columns in dataset
+# total_rows=len(df)
+# print("Total rows:",total_rows)
+# total_columns=len(df.columns)
+# print("Total rows:",total_columns)
+
+# # Question 23:Find Which column has the most missing values
+# most_missing_value=df.isna().sum()
+# print(most_missing_value)
+
+# Datasets
 import pandas as pd
+
 df = pd.DataFrame({
-    "Name": ["A", "B", "C"],
-    "Age": [20, None, 30],
-    "Salary": [None, 20000, None],
-    "Sex": ["Male","Female","Female"]
+    "Name": ["Amit", "Neha", "Rahul", "Priya", "Karan", "Anjali", "Rohit", "Sneha"],
+    "Age": [23, 28, None, 35, 40, 22, None, 30],
+    "Gender": ["Male", "Female", "Male", "Female", "Male", "Female", "Male", "Female"],
+    "Salary": [25000, 30000, 20000, None, 50000, 28000, 32000, None],
+    "Department": ["IT", "HR", "IT", "Finance", "IT", "HR", "Finance", "IT"]
 })
-print(df)
 
-# Question 18:Display the first 5 rows
-# print(df.head(2))
+# Basics Question
+'''1.Show first 5 rows
+2.Check data types
+3.Get full info of dataset'''
 
-# Question 19:Check the data types of all columns
-# print(df.dtypes)
+# Question1
+first_5_rows=df.head(5)
+print(first_5_rows)
 
-# Question 20:Get full information about the dataset (rows, columns, null values)
-# print(df.info())
+# Question2
+data_type=df.dtypes
+print("Data Types")
+print(data_type)
 
-# Question 21:Identify which column has missing values
-df.isna().any()
-
-# Question 22:Find Total number of rows and columns in dataset
-total_rows=len(df)
-print("Total rows:",total_rows)
-total_columns=len(df.columns)
-print("Total rows:",total_columns)
-
-# Question 23:Find Which column has the most missing values
-most_missing_value=df.isna().sum()
-print(most_missing_value)
+# Question3
+information=df.info()
+print("Information")
+print(information)
