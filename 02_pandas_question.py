@@ -78,12 +78,29 @@ import pandas as pd
 df = pd.DataFrame({
     "Name": ["A", "B", "C"],
     "Age": [20, None, 30],
-    "Salary": [10000, 20000, None]
+    "Salary": [None, 20000, None],
+    "Sex": ["Male","Female","Female"]
 })
 print(df)
 
 # Question 18:Display the first 5 rows
-print(df.head(2))
+# print(df.head(2))
 
 # Question 19:Check the data types of all columns
-print(df.dtypes)
+# print(df.dtypes)
+
+# Question 20:Get full information about the dataset (rows, columns, null values)
+# print(df.info())
+
+# Question 21:Identify which column has missing values
+df.isna().any()
+
+# Question 22:Find Total number of rows and columns in dataset
+total_rows=len(df)
+print("Total rows:",total_rows)
+total_columns=len(df.columns)
+print("Total rows:",total_columns)
+
+# Question 23:Find Which column has the most missing values
+most_missing_value=df.isna().sum()
+print(most_missing_value)
