@@ -122,15 +122,69 @@ df = pd.DataFrame({
 3.Get full info of dataset'''
 
 # Question1
-first_5_rows=df.head(5)
-print(first_5_rows)
+# first_5_rows=df.head(5)
+# print(first_5_rows)
 
 # Question2
-data_type=df.dtypes
-print("Data Types")
-print(data_type)
+# data_type=df.dtypes
+# print("Data Types")
+# print(data_type)
 
 # Question3
-information=df.info()
-print("Information")
-print(information)
+# information=df.info()
+# print("Information")
+# print(information)
+
+# Selection Question
+'''1.Select only Name and Salary
+2.Select only Age column'''
+# Question1
+# name_salary=df[["Name","Salary"]]
+# print(name_salary)
+
+# Question2
+# only_age=df[["Age"]]
+# print(only_age)
+
+# Filtering Question
+'''1.Show people with Age > 25
+2.Show people from IT department
+3.Show people with Salary > 30000
+4.All above 3 condition meet'''
+# Question1
+# age_greaterthan_25=df[df["Age"]>25]
+# print(age_greaterthan_25)
+
+# Question2
+# it_department=df[df["Department"]=="IT"]
+# print(it_department)
+
+# Question3
+# salary_greaterthan_30000=df[df["Salary"]>30000]
+# print(salary_greaterthan_30000)
+
+# Question4
+# all_condition=df[(df["Age"]>25) & (df["Department"]=="IT") & (df["Salary"]>30000)]
+# print(all_condition)
+
+# Missing Question
+'''1.Show rows where Age is missing
+2.Show rows where Salary is NOT missing'''
+# Question1
+# age_rows_missing=df[df.isnull().any(axis=1)]
+# print(age_rows_missing)
+
+# Question2
+# salary_rows_notmissing=df[df['Salary'].notna()]
+# print(salary_rows_notmissing)
+
+# Advance Question
+'''1.Get names of people with Age > 30
+2.Get Name + Salary where Salary > 25000'''
+# Question1
+name_age_greaterthan_30=df.loc[df["Age"]>30, ["Name"]]
+print(name_age_greaterthan_30)
+
+# Question2
+name_salary_greaterthan_25000=df.loc[df["Salary"]>25000, ["Name", "Salary"]]
+print(name_salary_greaterthan_25000)
