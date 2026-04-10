@@ -106,15 +106,15 @@
 # print(most_missing_value)
 
 # Datasets
-import pandas as pd
+# import pandas as pd
 
-df = pd.DataFrame({
-    "Name": ["Amit", "Neha", "Rahul", "Priya", "Karan", "Anjali", "Rohit", "Sneha"],
-    "Age": [23, 28, None, 35, 40, 22, None, 30],
-    "Gender": ["Male", "Female", "Male", "Female", "Male", "Female", "Male", "Female"],
-    "Salary": [25000, 30000, 20000, None, 50000, 28000, 32000, None],
-    "Department": ["IT", "HR", "IT", "Finance", "IT", "HR", "Finance", "IT"]
-})
+# df = pd.DataFrame({
+#     "Name": ["Amit", "Neha", "Rahul", "Priya", "Karan", "Anjali", "Rohit", "Sneha"],
+#     "Age": [23, 28, None, 35, 40, 22, None, 30],
+#     "Gender": ["Male", "Female", "Male", "Female", "Male", "Female", "Male", "Female"],
+#     "Salary": [25000, 30000, 20000, None, 50000, 28000, 32000, None],
+#     "Department": ["IT", "HR", "IT", "Finance", "IT", "HR", "Finance", "IT"]
+# })
 
 # Basics Question
 '''1.Show first 5 rows
@@ -182,9 +182,38 @@ df = pd.DataFrame({
 '''1.Get names of people with Age > 30
 2.Get Name + Salary where Salary > 25000'''
 # Question1
-name_age_greaterthan_30=df.loc[df["Age"]>30, ["Name"]]
-print(name_age_greaterthan_30)
+# name_age_greaterthan_30=df.loc[df["Age"]>30, ["Name"]]
+# print(name_age_greaterthan_30)
 
 # Question2
-name_salary_greaterthan_25000=df.loc[df["Salary"]>25000, ["Name", "Salary"]]
-print(name_salary_greaterthan_25000)
+# name_salary_greaterthan_25000=df.loc[df["Salary"]>25000, ["Name", "Salary"]]
+# print(name_salary_greaterthan_25000)
+
+
+# Dataset 2
+import pandas as pd
+
+df = pd.DataFrame({
+    "Name": ["Amit", "Neha", "Rahul", "Priya", "Karan", "Anjali", "Rohit", "Sneha"],
+    "Age": [23, 28, None, 35, 40, 22, None, 30],
+    "Salary": [25000, 30000, 20000, None, 50000, 28000, 32000, None],
+    "Bonus": [2000, 3000, 1500, 4000, 5000, 2500, 3500, 3000],
+    "Department": ["IT", "HR", "IT", "Finance", "IT", "HR", "Finance", "IT"]
+})
+
+# Basic Column Creation
+'''Q1. Create a new column:"Double_Age" = Age x 2
+Q2. Create a new column:"Salary_in_K" = Salary / 1000
+Q3. Create a new column:"Total_Earning" = Salary + Bonus'''
+
+# Question 1
+# df["Double_age"]=df["Age"]*2
+# print(df)
+
+# Question 2
+# df["Salary_in_K"]=df["Salary"]/1000
+# print(df)
+
+# Question 3
+df["Total_earning"]=df["Salary"]+df["Bonus"]
+print(df)
