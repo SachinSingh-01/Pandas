@@ -246,9 +246,22 @@ import numpy as np
 Q7.Create a new column:"Salary_Per_Age" = Salary / Age'''
 
 # Question 6
-df["Bonus_Ratio"]=df["Bonus"]/df["Salary"]
-print(df)
+# df["Bonus_Ratio"]=df["Bonus"]/df["Salary"]
+# print(df)
 
 # Question 7
-df["Salary_Per_Age"]=df["Salary"]/df["Age"]
-print(df)
+# df["Salary_Per_Age"]=df["Salary"]/df["Age"]
+# print(df)
+
+# Rename Question
+'''Q8.Rename:
+"Name" → "Employee_Name"
+"Salary" → "Monthly_Salary"
+Q9.Convert all column names to lowercase'''
+rename_name_salary=df.rename(
+    columns={
+        "Name":"Employee_Name",
+        "Salary":"Monthly_Salary"
+    }
+)
+print(rename_name_salary)
