@@ -215,5 +215,23 @@ Q3. Create a new column:"Total_Earning" = Salary + Bonus'''
 # print(df)
 
 # Question 3
-df["Total_earning"]=df["Salary"]+df["Bonus"]
+# df["Total_earning"]=df["Salary"]+df["Bonus"]
+# print(df)
+
+# Logical / Real Thinking
+'''Q4.Create a new column:"Age_Group"
+Condition:
+Age < 25 → "Young"
+Age ≥ 25 → "Adult"
+(Hint: use apply() or conditional logic)
+
+Q5.Create a new column:"High_Earner"
+Condition:
+Salary > 30000 → "Yes"
+Else → "No"'''
+
+# Question 5
+import numpy as np
+# df["Age_Group"] = df["Age"].apply(lambda x: "Young" if x < 25 else "Adult")
+df["Age_Group"] = np.where(df["Age"] < 25, "Young", "Adult")
 print(df)
