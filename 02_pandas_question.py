@@ -230,8 +230,13 @@ Condition:
 Salary > 30000 → "Yes"
 Else → "No"'''
 
-# Question 5
+# Question 4
 import numpy as np
 # df["Age_Group"] = df["Age"].apply(lambda x: "Young" if x < 25 else "Adult")
 df["Age_Group"] = np.where(df["Age"] < 25, "Young", "Adult")
+print(df)
+
+# Question 5
+import numpy as np
+df["High_Earner"]=np.where(df["Salary"]>30000,"Yes", "No")
 print(df)
