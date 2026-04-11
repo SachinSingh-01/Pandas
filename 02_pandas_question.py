@@ -258,10 +258,24 @@ Q7.Create a new column:"Salary_Per_Age" = Salary / Age'''
 "Name" → "Employee_Name"
 "Salary" → "Monthly_Salary"
 Q9.Convert all column names to lowercase'''
-rename_name_salary=df.rename(
-    columns={
-        "Name":"Employee_Name",
-        "Salary":"Monthly_Salary"
-    }
-)
-print(rename_name_salary)
+# Question 8
+# rename_name_salary=df.rename(
+#     columns={
+#         "Name":"Employee_Name",
+#         "Salary":"Monthly_Salary"
+#     }
+# )
+# print(rename_name_salary)
+
+# Question 9
+# lower_case=df.rename(columns=str.lower)
+# print(lower_case)
+
+# Real-world Thinking
+'''Q10.Create a new column:"Tax"
+Condition:
+Salary > 30000 → Tax = 10% of Salary
+Else → Tax = 5% of Salary'''
+import numpy as np
+df["Tax"]=np.where(df["Salary"]>30000, df["Salary"]*0.10,df["Salary"]*0.05)
+print(df)
