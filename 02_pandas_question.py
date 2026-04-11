@@ -276,6 +276,35 @@ Q9.Convert all column names to lowercase'''
 Condition:
 Salary > 30000 → Tax = 10% of Salary
 Else → Tax = 5% of Salary'''
-import numpy as np
-df["Tax"]=np.where(df["Salary"]>30000, df["Salary"]*0.10,df["Salary"]*0.05)
-print(df)
+# import numpy as np
+# df["Tax"]=np.where(df["Salary"]>30000, df["Salary"]*0.10,df["Salary"]*0.05)
+# print(df)
+
+# New Dataset
+import pandas as pd
+
+df = pd.DataFrame({
+    "Employee_ID": range(1, 16),
+    "Name": ["Amit", "Neha", "Rahul", "Priya", "Karan", "Anjali", "Rohit", "Sneha",
+             "Vikas", "Pooja", "Arjun", "Kriti", "Manish", "Riya", "Sahil"],
+    "Age": [23, 28, 35, 40, 29, 31, 45, 26, 38, 27, 50, 33, 41, 30, 36],
+    "Gender": ["Male", "Female", "Male", "Female", "Male", "Female", "Male", "Female",
+               "Male", "Female", "Male", "Female", "Male", "Female", "Male"],
+    "Department": ["IT", "HR", "Finance", "IT", "IT", "HR", "Finance", "IT",
+                   "Finance", "HR", "IT", "Finance", "IT", "HR", "Finance"],
+    "Salary": [25000, 30000, 45000, 50000, 28000, 32000, 60000, 27000,
+               52000, 29000, 70000, 48000, 55000, 31000, 53000],
+    "Experience": [1, 3, 7, 10, 4, 5, 12, 2, 9, 3, 15, 6, 11, 4, 8],
+    "Rating": [3.5, 4.0, 4.5, 4.8, 3.9, 4.2, 4.7, 3.8, 4.6, 4.1, 4.9, 4.3, 4.8, 4.0, 4.5]
+})
+# Warm-up Question
+'''Q1.Find:Average salary of all employees
+Q2.Find:Median experience
+Q3.Get full statistical summary of:Salary, Age, Experience'''
+# Question 1
+average=df["Salary"].mean()
+print(average)
+
+# Question 2
+med=df["Salary"].median()
+print(med)
