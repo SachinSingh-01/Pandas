@@ -322,5 +322,17 @@ Q6.Find:Maximum salary in each department'''
 # print(average_rate_gender)
 
 # Question 6
-max_by_dept=df.groupby("Department")["Salary"].max()
-print(max_by_dept)
+# max_by_dept=df.groupby("Department")["Salary"].max()
+# print(max_by_dept)
+
+# Multi-Level Grouping (ADVANCED)
+'''Q7.Find:Average salary based on:Department,Gender
+
+Q8.Find:Average experience based on:Gender,Department'''
+
+# Question 7
+average_dep_gen=df.groupby(["Department","Gender"])["Salary"].mean()
+print(average_dep_gen)
+
+# Question 8
+average_gen_dep=df.groupby(["Gender","Department"])["Experience"].mean()
