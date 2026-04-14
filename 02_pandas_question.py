@@ -331,8 +331,26 @@ Q6.Find:Maximum salary in each department'''
 Q8.Find:Average experience based on:Gender,Department'''
 
 # Question 7
-average_dep_gen=df.groupby(["Department","Gender"])["Salary"].mean()
-print(average_dep_gen)
+# average_dep_gen=df.groupby(["Department","Gender"])["Salary"].mean()
+# print(average_dep_gen)
 
 # Question 8
-average_gen_dep=df.groupby(["Gender","Department"])["Experience"].mean()
+# average_gen_dep=df.groupby(["Gender","Department"])["Experience"].mean()
+# print((average_gen_dep))
+# Deep Analytical Thinking
+'''Q9.Which department has:Highest average salary
+Q10.Which gender has:Higher average rating
+Q11.Find:Number of employees in each department
+Q12.Find:Count of employees by Gender + Department'''
+
+# Question 9
+# highest_avg_sal_dept=df.groupby(["Department"])["Salary"].mean().idxmax()
+# print(highest_avg_sal_dept)
+
+# Question 10
+# highest_avg_rating=df.groupby(["Gender"])["Rating"].mean().idxmax()
+# print(highest_avg_rating)
+
+# Question 11
+no_of_employee=df.groupby(["Department"])["Name"].count()
+print(no_of_employee)
