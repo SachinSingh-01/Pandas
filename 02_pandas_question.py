@@ -302,9 +302,25 @@ df = pd.DataFrame({
 Q2.Find:Median experience
 Q3.Get full statistical summary of:Salary, Age, Experience'''
 # Question 1
-average=df["Salary"].mean()
-print(average)
+# average=df["Salary"].mean()
+# print(average)
 
 # Question 2
-med=df["Salary"].median()
-print(med)
+# med=df["Salary"].median()
+# print(med)
+
+# GroupBy Core 
+'''Q4.Find:Average salary per department
+Q5.Find:Average rating per gender
+Q6.Find:Maximum salary in each department'''
+# Question 4
+# average_salary_dept=df.groupby("Department")["Salary"].mean()
+# print(average_salary_dept)
+
+# Question 5
+# average_rate_gender=df.groupby("Gender")["Rating"].mean()
+# print(average_rate_gender)
+
+# Question 6
+max_by_dept=df.groupby("Department")["Salary"].max()
+print(max_by_dept)
