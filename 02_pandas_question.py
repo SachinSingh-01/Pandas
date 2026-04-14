@@ -354,3 +354,7 @@ Q12.Find:Count of employees by Gender + Department'''
 # Question 11
 no_of_employee=df.groupby(["Department"])["Name"].count()
 print(no_of_employee)
+
+# Question 12
+count_gen_dept=df.groupby(["Gender","Department"])["Name"].count()
+print(count_gen_dept)
