@@ -380,9 +380,36 @@ average rating'''
 # aggregation_exp=df["Experience"].agg(["min","max"])
 # print(aggregation_exp)
 # Question 14
-aggregation_department = df.groupby(["Department"]).agg({
-    "Salary": "mean",
-    "Experience": "max",
-    "Rating": "mean"
-})
-print(aggregation_department)
+# aggregation_department = df.groupby(["Department"]).agg({
+#     "Salary": "mean",
+#     "Experience": "max",
+#     "Rating": "mean"
+# })
+# print(aggregation_department)
+
+# Real Analyst Thinking
+'''Q15.Find:Top 3 highest paid employees
+Q16.Find:Employees with salary above overall average
+Q17.Find:Department where average experience is highest
+Q18.Find:Correlation insight (manually think):
+Does higher experience → higher salary?
+(Hint: compare grouped stats)'''
+
+# Question 15
+top_paid_emp = df.sort_values(by="Salary", ascending=False).head(3)[["Name", "Salary"]]
+print(top_paid_emp)
+
+# Question 16
+average_salary = df["Salary"].mean()
+above_avg_employees = df[df["Salary"] > average_salary]
+print("Employees with salary above overall average:")
+print(above_avg_employees)
+
+# Question 17
+avg_exp_by_dept = df.groupby("Department")["Experience"].mean()
+highest_exp_dept = avg_exp_by_dept.idxmax()
+print(f"Department with highest average experience: {highest_exp_dept}")
+
+# Question 18
+correlation = df["Experience"].corr(df["Salary"])
+print(f"Correlation between Experience and Salary: {correlation}")
