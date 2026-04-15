@@ -281,7 +281,7 @@ Else → Tax = 5% of Salary'''
 # print(df)
 
 # New Dataset
-import pandas as pd
+'''import pandas as pd
 
 df = pd.DataFrame({
     "Employee_ID": range(1, 16),
@@ -296,7 +296,7 @@ df = pd.DataFrame({
                52000, 29000, 70000, 48000, 55000, 31000, 53000],
     "Experience": [1, 3, 7, 10, 4, 5, 12, 2, 9, 3, 15, 6, 11, 4, 8],
     "Rating": [3.5, 4.0, 4.5, 4.8, 3.9, 4.2, 4.7, 3.8, 4.6, 4.1, 4.9, 4.3, 4.8, 4.0, 4.5]
-})
+})'''
 # Warm-up Question
 '''Q1.Find:Average salary of all employees
 Q2.Find:Median experience
@@ -396,20 +396,51 @@ Does higher experience → higher salary?
 (Hint: compare grouped stats)'''
 
 # Question 15
-top_paid_emp = df.sort_values(by="Salary", ascending=False).head(3)[["Name", "Salary"]]
-print(top_paid_emp)
+# top_paid_emp = df.sort_values(by="Salary", ascending=False).head(3)[["Name", "Salary"]]
+# print(top_paid_emp)
 
 # Question 16
-average_salary = df["Salary"].mean()
-above_avg_employees = df[df["Salary"] > average_salary]
-print("Employees with salary above overall average:")
-print(above_avg_employees)
+# average_salary = df["Salary"].mean()
+# above_avg_employees = df[df["Salary"] > average_salary]
+# print("Employees with salary above overall average:")
+# print(above_avg_employees)
 
 # Question 17
-avg_exp_by_dept = df.groupby("Department")["Experience"].mean()
-highest_exp_dept = avg_exp_by_dept.idxmax()
-print(f"Department with highest average experience: {highest_exp_dept}")
+# avg_exp_by_dept = df.groupby("Department")["Experience"].mean()
+# highest_exp_dept = avg_exp_by_dept.idxmax()
+# print(f"Department with highest average experience: {highest_exp_dept}")
 
 # Question 18
-correlation = df["Experience"].corr(df["Salary"])
-print(f"Correlation between Experience and Salary: {correlation}")
+# correlation = df["Experience"].corr(df["Salary"])
+# print(f"Correlation between Experience and Salary: {correlation}")
+
+import pandas as pd
+
+df = pd.DataFrame({
+    "Date": ["2024-01-01","2024-01-01","2024-01-01","2024-01-02","2024-01-02","2024-01-02",
+             "2024-01-03","2024-01-03","2024-01-03"],
+    "City": ["Delhi","Mumbai","Bangalore","Delhi","Mumbai","Bangalore",
+             "Delhi","Mumbai","Bangalore"],
+    "Product": ["Laptop","Laptop","Laptop","Phone","Phone","Phone",
+                "Tablet","Tablet","Tablet"],
+    "Sales": [50000,60000,55000,30000,35000,32000,20000,25000,23000],
+    "Units": [5,6,5,10,12,11,8,9,7]
+})
+
+# Sorting 
+'''Q1.Sort the dataset by:Sales (ascending)
+Q2.Sort the dataset by:City and Sales (descending)
+Q3.Find:Top 5 highest sales records'''
+
+# Question 1
+# sort_sales=df.sort_values(by="Sales",ascending=True)
+# print(sort_sales)
+
+# Question 2
+# sort_city_sales=df.sort_values(["City","Sales"],ascending=False)
+# print(sort_city_sales)
+
+# Question 3
+top_sales=df.sort_values(by="Sales",ascending=False).head(5)
+# top_paid_emp = df.sort_values(by="Salary", ascending=False).head(3)[["Name", "Salary"]]
+print(top_sales)
