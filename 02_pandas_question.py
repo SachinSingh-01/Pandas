@@ -351,10 +351,38 @@ Q12.Find:Count of employees by Gender + Department'''
 # highest_avg_rating=df.groupby(["Gender"])["Rating"].mean().idxmax()
 # print(highest_avg_rating)
 
-# Question 11
-no_of_employee=df.groupby(["Department"])["Name"].count()
-print(no_of_employee)
+# # Question 11
+# no_of_employee=df.groupby(["Department"])["Name"].count()
+# print(no_of_employee)
 
 # Question 12
-count_gen_dept=df.groupby(["Gender","Department"])["Name"].count()
-print(count_gen_dept)
+# count_gen_dept=df.groupby(["Gender","Department"])["Name"].count()
+# print(count_gen_dept)
+
+# Advanced Aggregation (PRO LEVEL)
+'''Q13.Use .agg() to find:For Salary:
+min
+max
+mean
+
+For Experience:
+min
+max
+Q14.For each department, calculate:
+mean salary
+max experience
+average rating'''
+
+# Question 13
+# aggregation_salary=df["Salary"].agg(["min","max","mean"])
+# print(aggregation_salary)
+
+# aggregation_exp=df["Experience"].agg(["min","max"])
+# print(aggregation_exp)
+# Question 14
+aggregation_department = df.groupby(["Department"]).agg({
+    "Salary": "mean",
+    "Experience": "max",
+    "Rating": "mean"
+})
+print(aggregation_department)
