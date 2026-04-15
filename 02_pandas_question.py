@@ -441,6 +441,17 @@ Q3.Find:Top 5 highest sales records'''
 # print(sort_city_sales)
 
 # Question 3
-top_sales=df.sort_values(by="Sales",ascending=False).head(5)
-# top_paid_emp = df.sort_values(by="Salary", ascending=False).head(3)[["Name", "Salary"]]
-print(top_sales)
+# top_sales=df.sort_values(by="Sales",ascending=False).head(5)
+# print(top_sales)
+
+# Understanding Structure
+'''Q4.Check:How many unique cities exist
+Q5.Check:How many unique products exist'''
+
+# Question 4
+unique_city=df["City"].unique()
+print(unique_city)
+
+# Question 5
+unique_product=df["Product"].unique()
+print(unique_product)
