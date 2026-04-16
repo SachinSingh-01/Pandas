@@ -449,9 +449,55 @@ Q3.Find:Top 5 highest sales records'''
 Q5.Check:How many unique products exist'''
 
 # Question 4
-unique_city=df["City"].unique()
-print(unique_city)
+# unique_city=df["City"].unique()
+# print(unique_city)
 
 # Question 5
-unique_product=df["Product"].unique()
-print(unique_product)
+# unique_product=df["Product"].unique()
+# print(unique_product)
+
+# Pivot 
+'''Q6.Create a pivot table:
+Index = Date
+Columns = City
+Values = Sales
+Q7.Create a pivot:
+Index = Date
+Columns = Product
+Values = Units'''
+
+# Question 6
+table=df.pivot_table(
+    index="Date",
+    columns="City",
+    values="Sales"
+)
+print(table)
+
+# Question 7
+table1=df.pivot(
+    index="Date",
+    columns="City",
+    values="Units"
+)
+print(table1)
+
+# Pivot Table (Aggregation)
+'''Q8.Create pivot_table:
+Index = City
+Columns = Product
+Values = Sales
+aggfunc = mean
+Q9.Create pivot_table:
+Index = Product
+Values = Sales
+aggfunc = sum
+Q10.Create pivot_table:
+Index = City
+Columns = Product
+Values = Units
+aggfunc = sum
+Include totals (margins=True)'''
+
+# Question 8
+table
