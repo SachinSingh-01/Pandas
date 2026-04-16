@@ -500,28 +500,60 @@ aggfunc = sum
 Include totals (margins=True)'''
 
 # Question 8
-table1=df.pivot_table(
-    index="City",
-    columns="Product",
-    values="Sales",
-    aggfunc="mean"
-)
-print(table1)
+# table1=df.pivot_table(
+#     index="City",
+#     columns="Product",
+#     values="Sales",
+#     aggfunc="mean"
+# )
+# print(table1)
 
 # Question 9
-table2=df.pivot_table(
-    index="Product",
-    values="Sales",
-    aggfunc="sum"
-)
-print(table2)
+# table2=df.pivot_table(
+#     index="Product",
+#     values="Sales",
+#     aggfunc="sum"
+# )
+# print(table2)
 
 # Question 10
-table3=df.pivot_table(
-    index="City",
-    columns="Product",
-    values="Units",
-    aggfunc="sum",
-    margins=True
+# table3=df.pivot_table(
+#     index="City",
+#     columns="Product",
+#     values="Units",
+#     aggfunc="sum",
+#     margins=True
+# )
+# print(table3)
+
+# Melt (Wide → Long)
+'''Q11.First create pivot:
+Date vs City (Sales)
+Then:Convert it back to long format using melt()
+Q12.Use melt with:
+Custom column names:
+var_name = "City_Name"
+value_name = "Total_Sales"'''
+
+# Question 11
+table=df.pivot(
+    index="Date",
+    columns="City",
+    values="City"
+    
 )
-print(table3)
+convert_melt=table.melt()
+print(convert_melt)
+# Question 12
+# table1=df.melt(
+#     var_name="City_Name",
+#     value_name="Total_Sales"
+# )
+# print(table1)
+
+# Real Analyst Thinking
+'''Q13.Which city has:Highest total sales
+Q14.Which product has:Maximum total units sold
+Q15.On which date:Sales were highest overall'''
+
+# Question 13
