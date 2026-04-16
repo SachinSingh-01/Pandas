@@ -536,14 +536,14 @@ var_name = "City_Name"
 value_name = "Total_Sales"'''
 
 # Question 11
-table=df.pivot(
-    index="Date",
-    columns="City",
-    values="City"
+# table=df.pivot(
+#     index="Date",
+#     columns="City",
+#     values="City"
     
-)
-convert_melt=table.melt()
-print(convert_melt)
+# )
+# convert_melt=table.melt()
+# print(convert_melt)
 # Question 12
 # table1=df.melt(
 #     var_name="City_Name",
@@ -557,3 +557,10 @@ Q14.Which product has:Maximum total units sold
 Q15.On which date:Sales were highest overall'''
 
 # Question 13
+highest_sales=df.groupby(["City"])["Sales"].mean().idxmax()
+print(highest_sales)
+
+# Question 14
+highest_product=df.groupby(["Product"])["Units"].mean().idxmax()
+print(highest_product)
+
