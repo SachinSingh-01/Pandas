@@ -467,20 +467,20 @@ Columns = Product
 Values = Units'''
 
 # Question 6
-table=df.pivot_table(
-    index="Date",
-    columns="City",
-    values="Sales"
-)
-print(table)
+# table=df.pivot_table(
+#     index="Date",
+#     columns="City",
+#     values="Sales"
+# )
+# print(table)
 
 # Question 7
-table1=df.pivot(
-    index="Date",
-    columns="City",
-    values="Units"
-)
-print(table1)
+# table1=df.pivot(
+#     index="Date",
+#     columns="City",
+#     values="Units"
+# )
+# print(table1)
 
 # Pivot Table (Aggregation)
 '''Q8.Create pivot_table:
@@ -500,4 +500,28 @@ aggfunc = sum
 Include totals (margins=True)'''
 
 # Question 8
-table
+table1=df.pivot_table(
+    index="City",
+    columns="Product",
+    values="Sales",
+    aggfunc="mean"
+)
+print(table1)
+
+# Question 9
+table2=df.pivot_table(
+    index="Product",
+    values="Sales",
+    aggfunc="sum"
+)
+print(table2)
+
+# Question 10
+table3=df.pivot_table(
+    index="City",
+    columns="Product",
+    values="Units",
+    aggfunc="sum",
+    margins=True
+)
+print(table3)
