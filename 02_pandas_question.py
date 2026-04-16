@@ -557,13 +557,13 @@ Q14.Which product has:Maximum total units sold
 Q15.On which date:Sales were highest overall'''
 
 # Question 13
-highest_sales=df.groupby(["City"])["Sales"].mean().idxmax()
+highest_sales=df.groupby(["City"])["Sales"].sum().idxmax()
 print(highest_sales)
 
 # Question 14
-highest_product=df.groupby(["Product"])["Units"].mean().idxmax()
+highest_product=df.groupby(["Product"])["Units"].sum().idxmax()
 print(highest_product)
 
 # Question 15
-sale_date_high=df.groupby(["Date"])["Sales"].mean().idxmax()
+sale_date_high=df.groupby(["Date"])["Sales"].sum().idxmax()
 print(sale_date_high)
