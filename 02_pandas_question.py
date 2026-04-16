@@ -564,3 +564,6 @@ print(highest_sales)
 highest_product=df.groupby(["Product"])["Units"].mean().idxmax()
 print(highest_product)
 
+# Question 15
+sale_date_high=df.groupby(["Date"])["Sales"].mean().idxmax()
+print(sale_date_high)
