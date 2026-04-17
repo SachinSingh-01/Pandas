@@ -593,9 +593,21 @@ using correct column
 Q2.Merge:above result with products'''
 
 # Question 1
-merge_user_order=pd.concat([users,orders])
-print(merge_user_order)
+# merge_user_order=pd.concat([users,orders])
+# print(merge_user_order)
 
 # Question 2
-merge_above_product=pd.concat([merge_user_order,orders])
-print(merge_above_product)
+# merge_above_product=pd.concat([merge_user_order,orders])
+# print(merge_above_product)
+
+# Understanding Data 
+'''Q3.Find:Total number of orders per user
+Q4.Find:Total spending per user'''
+
+# Question 3
+total_order=orders.groupby("user_id")["order_id"].count()
+print(total_order)
+
+# Question 4
+spending_user=orders.groupby("order_id")["amount"].sum()
+print(spending_user)
