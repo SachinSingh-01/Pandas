@@ -605,9 +605,33 @@ Q2.Merge:above result with products'''
 Q4.Find:Total spending per user'''
 
 # Question 3
-total_order=orders.groupby("user_id")["order_id"].count()
-print(total_order)
+# total_order=orders.groupby("user_id")["order_id"].count()
+# print(total_order)
 
 # Question 4
-spending_user=orders.groupby("order_id")["amount"].sum()
-print(spending_user)
+# spending_user=orders.groupby("order_id")["amount"].sum()
+# print(spending_user)
+
+# Business Insights 
+'''Q5.Which city has:Highest total revenue
+Q6.Which product has:Highest total sales amount'''
+
+# Question 5
+# high_total_revenue=pd.merge(users,orders,on="user_id").groupby("city")["amount"].sum().idxmax()
+# print(high_total_revenue)
+
+# Question 6
+# high_product_sales=orders.groupby("product")["amount"].sum().idxmax()
+# print(high_product_sales)
+
+# Advanced Merge + Logic
+'''Q7.Calculate:Profit for each order
+(Hint: amount x profit_margin)
+Q8.Find:Total profit per product'''
+
+# Question 7
+merged=pd.merge(orders,products,on="product")
+merged["profit"]=merged["amount"]*merged["profit_margin"]
+print(merged.head())
+
+# Question 8
