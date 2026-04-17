@@ -414,18 +414,18 @@ Does higher experience → higher salary?
 # correlation = df["Experience"].corr(df["Salary"])
 # print(f"Correlation between Experience and Salary: {correlation}")
 
-import pandas as pd
+# import pandas as pd
 
-df = pd.DataFrame({
-    "Date": ["2024-01-01","2024-01-01","2024-01-01","2024-01-02","2024-01-02","2024-01-02",
-             "2024-01-03","2024-01-03","2024-01-03"],
-    "City": ["Delhi","Mumbai","Bangalore","Delhi","Mumbai","Bangalore",
-             "Delhi","Mumbai","Bangalore"],
-    "Product": ["Laptop","Laptop","Laptop","Phone","Phone","Phone",
-                "Tablet","Tablet","Tablet"],
-    "Sales": [50000,60000,55000,30000,35000,32000,20000,25000,23000],
-    "Units": [5,6,5,10,12,11,8,9,7]
-})
+# df = pd.DataFrame({
+#     "Date": ["2024-01-01","2024-01-01","2024-01-01","2024-01-02","2024-01-02","2024-01-02",
+#              "2024-01-03","2024-01-03","2024-01-03"],
+#     "City": ["Delhi","Mumbai","Bangalore","Delhi","Mumbai","Bangalore",
+#              "Delhi","Mumbai","Bangalore"],
+#     "Product": ["Laptop","Laptop","Laptop","Phone","Phone","Phone",
+#                 "Tablet","Tablet","Tablet"],
+#     "Sales": [50000,60000,55000,30000,35000,32000,20000,25000,23000],
+#     "Units": [5,6,5,10,12,11,8,9,7]
+# })
 
 # Sorting 
 '''Q1.Sort the dataset by:Sales (ascending)
@@ -557,13 +557,45 @@ Q14.Which product has:Maximum total units sold
 Q15.On which date:Sales were highest overall'''
 
 # Question 13
-highest_sales=df.groupby(["City"])["Sales"].sum().idxmax()
-print(highest_sales)
+# highest_sales=df.groupby(["City"])["Sales"].sum().idxmax()
+# print(highest_sales)
 
 # Question 14
-highest_product=df.groupby(["Product"])["Units"].sum().idxmax()
-print(highest_product)
+# highest_product=df.groupby(["Product"])["Units"].sum().idxmax()
+# print(highest_product)
 
 # Question 15
-sale_date_high=df.groupby(["Date"])["Sales"].sum().idxmax()
-print(sale_date_high)
+# sale_date_high=df.groupby(["Date"])["Sales"].sum().idxmax()
+# print(sale_date_high)
+
+users = pd.DataFrame({
+    "user_id": [1,2,3,4,5,6,7,8],
+    "name": ["Amit","Neha","Rahul","Priya","Karan","Anjali","Rohit","Sneha"],
+    "city": ["Delhi","Mumbai","Delhi","Bangalore","Mumbai","Delhi","Bangalore","Mumbai"],
+    "age": [23,28,35,30,40,27,33,29]
+})
+orders = pd.DataFrame({
+    "order_id": [101,102,103,104,105,106,107,108,109,110],
+    "user_id": [1,2,1,3,4,5,6,7,8,2],
+    "product": ["Laptop","Phone","Tablet","Laptop","Phone","Tablet","Laptop","Phone","Tablet","Laptop"],
+    "amount": [50000,20000,15000,52000,22000,18000,55000,25000,17000,60000]
+})
+products = pd.DataFrame({
+    "product": ["Laptop","Phone","Tablet"],
+    "category": ["Electronics","Electronics","Electronics"],
+    "profit_margin": [0.2,0.15,0.1]
+})
+
+# Basic Merge
+'''Q1.Merge:
+users + orders
+using correct column
+Q2.Merge:above result with products'''
+
+# Question 1
+merge_user_order=pd.concat([users,orders])
+print(merge_user_order)
+
+# Question 2
+merge_above_product=pd.concat([merge_user_order,orders])
+print(merge_above_product)
