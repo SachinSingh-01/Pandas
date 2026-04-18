@@ -665,8 +665,14 @@ Q12.Which product should company focus more on?
 (based on revenue + profit)'''
 
 # Question 11
-merged1=pd.merge(users,orders,on="user_id")
-merged2=pd.merge(merged1,products,on="product")
-merged2["profit"]=merged2["amount"]*merged2["profit_margin"]
-result=merged2.groupby("city")["profit"].sum().idxmax()
+# merged1=pd.merge(users,orders,on="user_id")
+# merged2=pd.merge(merged1,products,on="product")
+# merged2["profit"]=merged2["amount"]*merged2["profit_margin"]
+# result=merged2.groupby("city")["profit"].sum().idxmax()
+# print(result)
+
+# Question 12
+more_focus=pd.merge(orders,products,on="product")
+more_focus["profit"]=more_focus["profit_margin"]*more_focus["amount"]
+result=more_focus.groupby("product")["profit"].sum().idxmax()
 print(result)
