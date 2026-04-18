@@ -630,13 +630,13 @@ Q6.Which product has:Highest total sales amount'''
 Q8.Find:Total profit per product'''
 
 # Question 7
-merged=pd.merge(orders,products,on="product")
-merged["profit"]=merged["amount"]*merged["profit_margin"]
-print(merged.head())
+# merged=pd.merge(orders,products,on="product")
+# merged["profit"]=merged["amount"]*merged["profit_margin"]
+# print(merged.head())
 
 # Question 8
-total_profit=merged.groupby("product")["profit"].sum()
-print(total_profit)
+# total_profit=merged.groupby("product")["profit"].sum()
+# print(total_profit)
 
 # Analyst-Level Thinking
 '''Q9.Find:Top 3 highest spending users
@@ -645,3 +645,5 @@ Below 30
 Above 30'''
 
 # Question 9
+top_spending=pd.merge(users,orders,on="user_id").groupby("name")["amount"].sum().sort_values(ascending=False).head(3)
+print(top_spending)
