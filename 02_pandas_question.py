@@ -649,12 +649,24 @@ Above 30'''
 # print(top_spending)
 
 # Question 10
-group_spend_more=pd.merge(users,orders,on="user_id")
-def age_category(age):
-    if age < 30:
-        return "Below 30"
-    else:
-        return "30 and above"
-group_spend_more["age_group"] = group_spend_more["age"].apply(age_category)
-result=group_spend_more.groupby("age_group")["amount"].sum()
+# group_spend_more=pd.merge(users,orders,on="user_id")
+# def age_category(age):
+#     if age < 30:
+#         return "Below 30"
+#     else:
+#         return "30 and above"
+# group_spend_more["age_group"] = group_spend_more["age"].apply(age_category)
+# result=group_spend_more.groupby("age_group")["amount"].sum()
+# print(result)
+
+# Real Decision Making
+'''Q11.Which city is:Most profitable
+Q12.Which product should company focus more on?
+(based on revenue + profit)'''
+
+# Question 11
+merged1=pd.merge(users,orders,on="user_id")
+merged2=pd.merge(merged1,products,on="product")
+merged2["profit"]=merged2["amount"]*merged2["profit_margin"]
+result=merged2.groupby("city")["profit"].sum().idxmax()
 print(result)
