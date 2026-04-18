@@ -645,5 +645,16 @@ Below 30
 Above 30'''
 
 # Question 9
-top_spending=pd.merge(users,orders,on="user_id").groupby("name")["amount"].sum().sort_values(ascending=False).head(3)
-print(top_spending)
+# top_spending=pd.merge(users,orders,on="user_id").groupby("name")["amount"].sum().sort_values(ascending=False).head(3)
+# print(top_spending)
+
+# Question 10
+group_spend_more=pd.merge(users,orders,on="user_id")
+def age_category(age):
+    if age < 30:
+        return "Below 30"
+    else:
+        return "30 and above"
+group_spend_more["age_group"] = group_spend_more["age"].apply(age_category)
+result=group_spend_more.groupby("age_group")["amount"].sum()
+print(result)
