@@ -568,7 +568,7 @@ Q15.On which date:Sales were highest overall'''
 # sale_date_high=df.groupby(["Date"])["Sales"].sum().idxmax()
 # print(sale_date_high)
 
-users = pd.DataFrame({
+'''users = pd.DataFrame({
     "user_id": [1,2,3,4,5,6,7,8],
     "name": ["Amit","Neha","Rahul","Priya","Karan","Anjali","Rohit","Sneha"],
     "city": ["Delhi","Mumbai","Delhi","Bangalore","Mumbai","Delhi","Bangalore","Mumbai"],
@@ -585,7 +585,7 @@ products = pd.DataFrame({
     "category": ["Electronics","Electronics","Electronics"],
     "profit_margin": [0.2,0.15,0.1]
 })
-
+'''
 # Basic Merge
 '''Q1.Merge:
 users + orders
@@ -672,7 +672,35 @@ Q12.Which product should company focus more on?
 # print(result)
 
 # Question 12
-more_focus=pd.merge(orders,products,on="product")
-more_focus["profit"]=more_focus["profit_margin"]*more_focus["amount"]
-result=more_focus.groupby("product")["profit"].sum().idxmax()
-print(result)
+# more_focus=pd.merge(orders,products,on="product")
+# more_focus["profit"]=more_focus["profit_margin"]*more_focus["amount"]
+# result=more_focus.groupby("product")["profit"].sum().idxmax()
+# print(result)
+
+import pandas as pd
+df = pd.DataFrame({
+    "datetime": [
+        "2024-01-01 08:00:00", "2024-01-01 12:00:00", "2024-01-01 18:00:00",
+        "2024-01-02 09:00:00", "2024-01-02 13:00:00", "2024-01-02 20:00:00",
+        "2024-01-03 07:00:00", "2024-01-03 14:00:00", "2024-01-03 21:00:00"
+    ],
+    "city": ["Delhi","Delhi","Delhi","Mumbai","Mumbai","Mumbai","Bangalore","Bangalore","Bangalore"],
+    "traffic": [120, 200, 180, 150, 220, 210, 100, 160, 140],
+    "pollution": [80, 90, 85, 70, 95, 88, 60, 75, 65]
+})
+# Basics 
+'''Q1.Convert "datetime" column into proper datetime format
+Q2.Extract:Hour from datetime
+Q3.Extract:Day of week (0 = Monday)'''
+
+# Question 1
+df["datetime"]=pd.to_datetime(df["datetime"])
+print(df)
+
+# Question  2
+df["hour"]=df["datetime"].dt.hour
+print(df)
+
+# Question 3
+df["day"]=df["datetime"].dt.weekday
+print(df)
