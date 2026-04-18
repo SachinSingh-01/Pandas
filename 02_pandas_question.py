@@ -635,3 +635,13 @@ merged["profit"]=merged["amount"]*merged["profit_margin"]
 print(merged.head())
 
 # Question 8
+total_profit=merged.groupby("product")["profit"].sum()
+print(total_profit)
+
+# Analyst-Level Thinking
+'''Q9.Find:Top 3 highest spending users
+Q10.Find:Which age group spends more:
+Below 30
+Above 30'''
+
+# Question 9
