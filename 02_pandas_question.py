@@ -414,18 +414,18 @@ Does higher experience → higher salary?
 # correlation = df["Experience"].corr(df["Salary"])
 # print(f"Correlation between Experience and Salary: {correlation}")
 
-# import pandas as pd
+'''import pandas as pd
 
-# df = pd.DataFrame({
-#     "Date": ["2024-01-01","2024-01-01","2024-01-01","2024-01-02","2024-01-02","2024-01-02",
-#              "2024-01-03","2024-01-03","2024-01-03"],
-#     "City": ["Delhi","Mumbai","Bangalore","Delhi","Mumbai","Bangalore",
-#              "Delhi","Mumbai","Bangalore"],
-#     "Product": ["Laptop","Laptop","Laptop","Phone","Phone","Phone",
-#                 "Tablet","Tablet","Tablet"],
-#     "Sales": [50000,60000,55000,30000,35000,32000,20000,25000,23000],
-#     "Units": [5,6,5,10,12,11,8,9,7]
-# })
+df = pd.DataFrame({
+    "Date": ["2024-01-01","2024-01-01","2024-01-01","2024-01-02","2024-01-02","2024-01-02",
+             "2024-01-03","2024-01-03","2024-01-03"],
+    "City": ["Delhi","Mumbai","Bangalore","Delhi","Mumbai","Bangalore",
+             "Delhi","Mumbai","Bangalore"],
+    "Product": ["Laptop","Laptop","Laptop","Phone","Phone","Phone",
+                "Tablet","Tablet","Tablet"],
+    "Sales": [50000,60000,55000,30000,35000,32000,20000,25000,23000],
+    "Units": [5,6,5,10,12,11,8,9,7]
+})'''
 
 # Sorting 
 '''Q1.Sort the dataset by:Sales (ascending)
@@ -756,19 +756,26 @@ filtered_date=df[df['datetime'].dt.date == pd.to_datetime("2024-01-02").date()]
 print(filtered_date)
 
 # Advanced thinking 
-# Q11.Find:Relationship:
-# Does higher traffic → higher pollution?
+'''Q11.Find:Relationship:
+Does higher traffic → higher pollution?
+(Hint: compare averages or correlation)
+Q12.Create new column:"traffic_level"
+Condition:
+traffic < 150 → Low
+150-200 → Medium
+200 → High'''
+# Question 11
 
-# (Hint: compare averages or correlation)
+# Question 12
+def traffic_level(traffic):
+    if traffic<150:
+        return "Low"
+    elif  traffic>=150 and traffic<=200:
+        return "Medium"
+    else:
+        return "High"
+df['traffic_level'] = df['traffic'].apply(traffic_level)
+print(df)
 
-# Q12
 
-# Create new column:
-# 👉 "traffic_level"
 
-# Condition:
-
-# traffic < 150 → Low
-# 150–200 → Medium
-
-# 200 → High
