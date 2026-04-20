@@ -694,13 +694,42 @@ Q2.Extract:Hour from datetime
 Q3.Extract:Day of week (0 = Monday)'''
 
 # Question 1
-df["datetime"]=pd.to_datetime(df["datetime"])
-print(df)
+# df["datetime"]=pd.to_datetime(df["datetime"])
+# print(df)
 
 # Question  2
-df["hour"]=df["datetime"].dt.hour
-print(df)
+# df["hour"]=df["datetime"].dt.hour
+# print(df)
 
 # Question 3
-df["day"]=df["datetime"].dt.weekday
-print(df)
+# df["day"]=df["datetime"].dt.weekday
+# print(df)
+
+# Understanding patterns
+'''Q4.Find:Average traffic for each hour
+Q5.Find:Average pollution per city'''
+
+# Question 4
+# df["datetime"]=pd.to_datetime(df["datetime"])
+# avg_traffic_hour=df.groupby(df["datetime"].dt.hour)["traffic"].mean()
+# print(avg_traffic_hour)
+
+# Question 5
+# df["datetime"]=pd.to_datetime(df["datetime"])
+# avg_pollution_city=df.groupby(df["datetime"].dt.hour)["city"].mean()
+# print(avg_pollution_city)
+
+# Time-based grouping 
+'''Q6.Find:Average traffic per day
+(Hint: use date, not full datetime)
+Q7.Find:Average pollution per weekday'''
+
+# Question 6
+# df["datetime"]=pd.to_datetime(df["datetime"])
+# avg_traffic_day=df.groupby(df["datetime"].dt.day)["traffic"].mean()
+# print(avg_traffic_day)
+
+# Question 7
+df["datetime"]=pd.to_datetime(df["datetime"])
+avg_pol_week=df.groupby(df["datetime"].dt.weekday)["pollution"].mean()
+print(avg_pol_week)
