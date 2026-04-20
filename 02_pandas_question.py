@@ -715,8 +715,7 @@ Q5.Find:Average pollution per city'''
 # print(avg_traffic_hour)
 
 # Question 5
-# df["datetime"]=pd.to_datetime(df["datetime"])
-# avg_pollution_city=df.groupby(df["datetime"].dt.hour)["city"].mean()
+# avg_pollution_city=df.groupby(df["city"])["pollution"].mean()
 # print(avg_pollution_city)
 
 # Time-based grouping 
@@ -730,6 +729,46 @@ Q7.Find:Average pollution per weekday'''
 # print(avg_traffic_day)
 
 # Question 7
+# df["datetime"]=pd.to_datetime(df["datetime"])
+# avg_pol_week=df.groupby(df["datetime"].dt.weekday)["pollution"].mean()
+# print(avg_pol_week)
+
+# Real-world thinking
+'''Q8.Which hour has:Highest average traffic
+Q9.Which city has:Highest average pollution'''
+
+# Question 8
+# df["datetime"]=pd.to_datetime(df["datetime"])
+# high_traffic_hr=df.groupby(df["datetime"].dt.hour)["traffic"].idxmax().max()
+# print(high_traffic_hr)
+
+# Question 9
+# df["datetime"]=pd.to_datetime(df["datetime"])
+# high_pol_city=df.groupby(df["city"])["pollution"].idxmax().head(1)
+# print(high_pol_city)
+
+# Time slicing
+'''Q10.Filter:Date only for "2024-01-02"'''
+
+# Question 10
 df["datetime"]=pd.to_datetime(df["datetime"])
-avg_pol_week=df.groupby(df["datetime"].dt.weekday)["pollution"].mean()
-print(avg_pol_week)
+filtered_date=df[df['datetime'].dt.date == pd.to_datetime("2024-01-02").date()]
+print(filtered_date)
+
+# Advanced thinking 
+# Q11.Find:Relationship:
+# Does higher traffic → higher pollution?
+
+# (Hint: compare averages or correlation)
+
+# Q12
+
+# Create new column:
+# 👉 "traffic_level"
+
+# Condition:
+
+# traffic < 150 → Low
+# 150–200 → Medium
+
+# 200 → High
