@@ -725,7 +725,7 @@ Q7.Find:Average pollution per weekday'''
 
 # Question 6
 # df["datetime"]=pd.to_datetime(df["datetime"])
-# avg_traffic_day=df.groupby(df["datetime"].dt.day)["traffic"].mean()
+# avg_traffic_day=df.groupby(df["datetime"].dt.date)["traffic"].mean()
 # print(avg_traffic_day)
 
 # Question 7
@@ -739,21 +739,23 @@ Q9.Which city has:Highest average pollution'''
 
 # Question 8
 # df["datetime"]=pd.to_datetime(df["datetime"])
-# high_traffic_hr=df.groupby(df["datetime"].dt.hour)["traffic"].idxmax().max()
+# high_traffic_hr = df.groupby(df["datetime"].dt.hour)["traffic"].mean().idxmax()
+
 # print(high_traffic_hr)
 
 # Question 9
 # df["datetime"]=pd.to_datetime(df["datetime"])
-# high_pol_city=df.groupby(df["city"])["pollution"].idxmax().head(1)
+# high_pol_city = df.groupby("city")["pollution"].mean().idxmax()
+
 # print(high_pol_city)
 
 # Time slicing
 '''Q10.Filter:Date only for "2024-01-02"'''
 
 # Question 10
-df["datetime"]=pd.to_datetime(df["datetime"])
-filtered_date=df[df['datetime'].dt.date == pd.to_datetime("2024-01-02").date()]
-print(filtered_date)
+# df["datetime"]=pd.to_datetime(df["datetime"])
+# filtered_date=df[df['datetime'].dt.date == pd.to_datetime("2024-01-02").date()]
+# print(filtered_date)
 
 # Advanced thinking 
 '''Q11.Find:Relationship:
@@ -765,6 +767,9 @@ traffic < 150 → Low
 150-200 → Medium
 200 → High'''
 # Question 11
+correlation=df['traffic'].corr(df["pollution"])
+print(f"Correlation:{correlation:.2f}")
+print(df.groupby('traffic_level')['pollution'].mean())
 
 # Question 12
 def traffic_level(traffic):
@@ -776,6 +781,3 @@ def traffic_level(traffic):
         return "High"
 df['traffic_level'] = df['traffic'].apply(traffic_level)
 print(df)
-
-
-
