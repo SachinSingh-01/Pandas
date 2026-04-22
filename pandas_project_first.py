@@ -48,11 +48,15 @@ Q9.Find:Most popular anime (based on members)
 Q10.Find:Average rating of all anime'''
 
 # Question 8
-top_highest_rate_anime=df.groupby(df['name'])["rating"].max().sort_values(ascending=False).head(10)
+top_highest_rate_anime=df.sort_values(by="rating",ascending=False)[["name","rating"]].head(10)
 print("Top highest rated anime")
 print(top_highest_rate_anime)
 
 # Question 9
-most_popular_anime=df.groupby(df["name"])["members"].max().sort_values(ascending=False).head(1)
+most_popular_anime=df.sort_values(by="members",ascending=False)[["name","members"]].head(10)
 print("Most popular anime")
 print(most_popular_anime)
+
+# Question 10
+average_rate_anime=(df["rating"]).mean()
+print(average_rate_anime)
