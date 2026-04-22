@@ -32,13 +32,27 @@ Q7.Convert:episodes column into numeric
 (Hint: some values are "Unknown")'''
 
 # Question 5
-find_missing_value=df.isna().sum()
-print(find_missing_value)
+# find_missing_value=df.isna().sum()
+# print(find_missing_value)
 
 # Question 6
-df["rating"] = df["rating"].fillna(df["rating"].mean())
+# df["rating"] = df["rating"].fillna(df["rating"].mean())
 
 # Question 7
-df["episodes"] = df["episodes"].replace("Unknown", pd.NA)
-df["episodes"] = pd.to_numeric(df["episodes"])
+# df["episodes"] = df["episodes"].replace("Unknown", pd.NA)
+# df["episodes"] = pd.to_numeric(df["episodes"])
 
+# Analysis 
+'''Q8.Find:Top 10 highest rated anime
+Q9.Find:Most popular anime (based on members)
+Q10.Find:Average rating of all anime'''
+
+# Question 8
+top_highest_rate_anime=df.groupby(df['name'])["rating"].max().sort_values(ascending=False).head(10)
+print("Top highest rated anime")
+print(top_highest_rate_anime)
+
+# Question 9
+most_popular_anime=df.groupby(df["name"])["members"].max().sort_values(ascending=False).head(1)
+print("Most popular anime")
+print(most_popular_anime)
