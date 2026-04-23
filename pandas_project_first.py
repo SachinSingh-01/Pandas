@@ -67,18 +67,16 @@ Q12.Find:Total number of anime per type
 Q13.Find:Average number of episodes per type'''
 
 # Question 11
-average_rating=df.groupby("type")["rating"].mean()
-print(average_rating)
+# average_rating=df.groupby("type")["rating"].mean()
+# print(average_rating)
 
 # Question 12
-total_no_anime=df.groupby("type")["name"].count()
-print(total_no_anime)
+# total_no_anime=df.groupby("type")["name"].count()
+# print(total_no_anime)
 
 # Question 13
-total_episodes=df.groupby("type")["episodes"].mean()
-print(total_episodes)
-
-# Question 14
+# total_episodes=df.groupby("type")["episodes"].mean()
+# print(total_episodes)
 
 # Genre Analysis
 '''Q14.Find:Most common genre
@@ -86,9 +84,13 @@ print(total_episodes)
 Q15.Find:Highest rated genre'''
 
 # Question 14
-most_common_genre=df["genre"].mode()
+df["genre"]=df["genre"].str.split(", ")
+explode=df.explode("genre")
+most_common_genre=explode["genre"].value_counts().idxmax()
 print(most_common_genre)
 
 # Question 15
-highest_rate_genre=df.groupby("genre")["rating"].max()
-print(highest_rate_genre)
+# df["genre"]=df["genre"].str.split(", ")
+# explode=df.explode("genre")
+# highest_rate_genre=explode.groupby("genre")["rating"].mean().idxmax()
+# print(highest_rate_genre)
