@@ -48,15 +48,47 @@ Q9.Find:Most popular anime (based on members)
 Q10.Find:Average rating of all anime'''
 
 # Question 8
-top_highest_rate_anime=df.sort_values(by="rating",ascending=False)[["name","rating"]].head(10)
-print("Top highest rated anime")
-print(top_highest_rate_anime)
+# top_highest_rate_anime=df.sort_values(by="rating",ascending=False)[["name","rating"]].head(10)
+# print("Top highest rated anime")
+# print(top_highest_rate_anime)
 
 # Question 9
-most_popular_anime=df.sort_values(by="members",ascending=False)[["name","members"]].head(10)
-print("Most popular anime")
-print(most_popular_anime)
+# most_popular_anime=df.sort_values(by="members",ascending=False)[["name","members"]].head(10)
+# print("Most popular anime")
+# print(most_popular_anime)
 
 # Question 10
-average_rate_anime=(df["rating"]).mean()
-print(average_rate_anime)
+# average_rate_anime=(df["rating"]).mean()
+# print(average_rate_anime)
+
+# Grouping
+'''Q11.Find:Average rating by type (TV, Movie, OVA)
+Q12.Find:Total number of anime per type
+Q13.Find:Average number of episodes per type'''
+
+# Question 11
+average_rating=df.groupby("type")["rating"].mean()
+print(average_rating)
+
+# Question 12
+total_no_anime=df.groupby("type")["name"].count()
+print(total_no_anime)
+
+# Question 13
+total_episodes=df.groupby("type")["episodes"].mean()
+print(total_episodes)
+
+# Question 14
+
+# Genre Analysis
+'''Q14.Find:Most common genre
+(Hint: genre column has multiple values)
+Q15.Find:Highest rated genre'''
+
+# Question 14
+most_common_genre=df["genre"].mode()
+print(most_common_genre)
+
+# Question 15
+highest_rate_genre=df.groupby("genre")["rating"].max()
+print(highest_rate_genre)
