@@ -84,13 +84,26 @@ Q13.Find:Average number of episodes per type'''
 Q15.Find:Highest rated genre'''
 
 # Question 14
-df["genre"]=df["genre"].str.split(", ")
-explode=df.explode("genre")
-most_common_genre=explode["genre"].value_counts().idxmax()
-print(most_common_genre)
+# df["genre"]=df["genre"].str.split(", ")
+# explode=df.explode("genre")
+# most_common_genre=explode["genre"].value_counts().idxmax()
+# print(most_common_genre)
 
 # Question 15
 # df["genre"]=df["genre"].str.split(", ")
 # explode=df.explode("genre")
 # highest_rate_genre=explode.groupby("genre")["rating"].mean().idxmax()
 # print(highest_rate_genre)
+
+# Real Business Thinking 
+'''Q16.Which type of anime:has highest engagement (members)?
+Q17.Find:Top 5 anime with:
+high rating
+high members
+Q18.Find:Relationship:Do more episodes → higher rating?'''
+
+# Question 16
+high_type_member=df.groupby("type")["members"].max().sort_values(ascending=False)
+print(high_type_member)
+
+# Question 17
