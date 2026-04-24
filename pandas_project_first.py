@@ -103,7 +103,19 @@ high members
 Q18.Find:Relationship:Do more episodes → higher rating?'''
 
 # Question 16
-high_type_member=df.groupby("type")["members"].max().sort_values(ascending=False)
-print(high_type_member)
+# high_type_member=df.groupby("type")["members"].sum().sort_values(ascending=False)
+# print(high_type_member)
 
 # Question 17
+top_rating_member=df.sort_values(by=["rating","members"],ascending=False).head(5)
+print(top_rating_member)
+
+# Question 18
+df["episodes"] = pd.to_numeric(df["episodes"], errors="coerce")
+relation_episodes_rating=df["episodes"].corr(df["rating"])
+print(relation_episodes_rating)
+
+# Pro Level 
+'''Q19.Create new column:"popularity_score"
+Formula:rating x members
+Q20.Find:Top 10 anime based on popularity_score'''
