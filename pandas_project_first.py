@@ -107,15 +107,22 @@ Q18.Find:Relationship:Do more episodes → higher rating?'''
 # print(high_type_member)
 
 # Question 17
-top_rating_member=df.sort_values(by=["rating","members"],ascending=False).head(5)
-print(top_rating_member)
+# top_rating_member=df.sort_values(by=["rating","members"],ascending=False).head(5)
+# print(top_rating_member)
 
 # Question 18
-df["episodes"] = pd.to_numeric(df["episodes"], errors="coerce")
-relation_episodes_rating=df["episodes"].corr(df["rating"])
-print(relation_episodes_rating)
+# df["episodes"] = pd.to_numeric(df["episodes"], errors="coerce")
+# relation_episodes_rating=df["episodes"].corr(df["rating"])
+# print(relation_episodes_rating)
 
 # Pro Level 
 '''Q19.Create new column:"popularity_score"
 Formula:rating x members
 Q20.Find:Top 10 anime based on popularity_score'''
+
+# Question 19
+df["popularity_score"]=df["rating"]*df["members"]
+print(df)
+
+# Question 20
+top_best_anime_pop_score=df.sort_values(by="popularity_score",ascending=False).head(10)
