@@ -121,8 +121,18 @@ Formula:rating x members
 Q20.Find:Top 10 anime based on popularity_score'''
 
 # Question 19
-df["popularity_score"]=df["rating"]*df["members"]
-print(df)
+# df["popularity_score"]=df["rating"]*df["members"]
+# print(df)
 
 # Question 20
-top_best_anime_pop_score=df.sort_values(by="popularity_score",ascending=False).head(10)
+# top_best_anime_pop_score=df.sort_values(by="popularity_score",ascending=False).head(10)
+# print(top_best_anime_pop_score)
+# Data Understanding 
+'''Q1.Find:Total number of anime in each type (TV, Movie, OVA)
+Q2.Find:Percentage of missing values in each column
+Q3.Find:Top 5 most common genres
+(Hint: genre column has multiple values)'''
+
+# Question 1
+total_anime_type=df.groupby("type").count().head(5)
+print(total_anime_type)
