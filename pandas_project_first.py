@@ -134,5 +134,14 @@ Q3.Find:Top 5 most common genres
 (Hint: genre column has multiple values)'''
 
 # Question 1
-total_anime_type=df.groupby("type").count().head(5)
+total_anime_type=df.groupby("type").size().head(5)
 print(total_anime_type)
+
+# Question 2
+percent_miss_value=df.isnull().sum()*100/len(df)
+print(percent_miss_value)
+print(total_anime_type)
+
+# Question 3
+most_common_genres=df["genre"].str.split(", ").explode().value_counts().head(5)
+print(most_common_genres)
