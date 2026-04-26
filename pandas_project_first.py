@@ -134,14 +134,38 @@ Q3.Find:Top 5 most common genres
 (Hint: genre column has multiple values)'''
 
 # Question 1
-total_anime_type=df.groupby("type").size().head(5)
-print(total_anime_type)
+# total_anime_type=df.groupby("type").size().head(5)
+# print(total_anime_type)
 
 # Question 2
-percent_miss_value=df.isnull().sum()*100/len(df)
-print(percent_miss_value)
-print(total_anime_type)
+# percent_miss_value=df.isnull().sum()*100/len(df)
+# print(percent_miss_value)
+# print(total_anime_type)
 
 # Question 3
-most_common_genres=df["genre"].str.split(", ").explode().value_counts().head(5)
-print(most_common_genres)
+# most_common_genres=df["genre"].str.split(", ").explode().value_counts().head(5)
+# print(most_common_genres)
+
+# Business Insights
+'''Q4.Which type of anime:
+has highest average rating
+and highest total members
+Compare both (important insight)
+Q5.Find:Top 10 anime which are:
+high rating
+high members
+(Not just one column → combine thinking)'''
+
+# Question 4
+high_rating_members=df.groupby("type").agg({
+    "rating": "mean",
+    "members": "sum"
+})
+print(high_rating_members)
+
+# Question 5
+df["score"]=df["rating"]*df["members"]
+top_anime_rate_members=df.sort_values(by="score",ascending=False)[["name","rating","members"]].head(10)
+print(top_anime_rate_members)
+
+# Question 6
