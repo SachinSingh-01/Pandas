@@ -157,15 +157,39 @@ high members
 (Not just one column → combine thinking)'''
 
 # Question 4
-high_rating_members=df.groupby("type").agg({
-    "rating": "mean",
-    "members": "sum"
-})
-print(high_rating_members)
+# high_rating_members=df.groupby("type").agg({
+#     "rating": "mean",
+#     "members": "sum"
+# })
+# print(high_rating_members)
 
 # Question 5
-df["score"]=df["rating"]*df["members"]
-top_anime_rate_members=df.sort_values(by="score",ascending=False)[["name","rating","members"]].head(10)
-print(top_anime_rate_members)
+# df["score"]=df["rating"]*df["members"]
+# top_anime_rate_members=df.sort_values(by="score",ascending=False)[["name","rating","members"]].head(10)
+# print(top_anime_rate_members)
+
+# Advanced Thinking 
+'''Q6.Find:Top genre by:
+average rating
+total members
+Compare both results
+Q7.Find:Which anime are:
+underrated (low members but high rating)
+Q8.Find:Which anime are:
+overrated (high members but low rating)'''
 
 # Question 6
+genre_df=df.dropna(subset=["genre"])
+genre_df = genre_df.assign(
+    genre=genre_df["genre"].str.split(", ")
+).explode("genre")
+top_genre_rating_members=df.groupby("genre").agg({
+    "rating":"mean",
+    "members":"sum"
+}).idxmax()
+print(top_genre_rating_members)
+
+# Question 7
+underrated_anime=df[(df["members"]<10000) & (df["rating"]>8.5)]
+underrated_anime[["name","rating","members"]].sort_values(by="rating",ascending=False).head(10)
+print(underrated_anime)
