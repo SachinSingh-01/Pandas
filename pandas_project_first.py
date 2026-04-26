@@ -193,3 +193,8 @@ print(top_genre_rating_members)
 underrated_anime=df[(df["members"]<10000) & (df["rating"]>8.5)]
 underrated_anime[["name","rating","members"]].sort_values(by="rating",ascending=False).head(10)
 print(underrated_anime)
+
+# Question 8
+overrated_anime=df[(df["members"]>10000) & (df["rating"]<4)]
+overrated_anime[["name","rating","members"]].sort_values(by="rating",ascending=False).head(10)
+print(overrated_anime)
