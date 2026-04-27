@@ -179,22 +179,52 @@ Q8.Find:Which anime are:
 overrated (high members but low rating)'''
 
 # Question 6
-genre_df=df.dropna(subset=["genre"])
-genre_df = genre_df.assign(
-    genre=genre_df["genre"].str.split(", ")
-).explode("genre")
-top_genre_rating_members=df.groupby("genre").agg({
-    "rating":"mean",
-    "members":"sum"
-}).idxmax()
-print(top_genre_rating_members)
+# genre_df=df.dropna(subset=["genre"])
+# genre_df = genre_df.assign(
+#     genre=genre_df["genre"].str.split(", ")
+# ).explode("genre")
+# top_genre_rating_members=df.groupby("genre").agg({
+#     "rating":"mean",
+#     "members":"sum"
+# }).idxmax()
+# print(top_genre_rating_members)
 
 # Question 7
-underrated_anime=df[(df["members"]<10000) & (df["rating"]>8.5)]
-underrated_anime[["name","rating","members"]].sort_values(by="rating",ascending=False).head(10)
-print(underrated_anime)
+# underrated_anime=df[(df["members"]<10000) & (df["rating"]>8.5)]
+# underrated_anime[["name","rating","members"]].sort_values(by="rating",ascending=False).head(10)
+# print(underrated_anime)
 
 # Question 8
-overrated_anime=df[(df["members"]>10000) & (df["rating"]<4)]
-overrated_anime[["name","rating","members"]].sort_values(by="rating",ascending=False).head(10)
-print(overrated_anime)
+# overrated_anime=df[(df["members"]>10000) & (df["rating"]<4)]
+# overrated_anime[["name","rating","members"]].sort_values(by="rating",ascending=False).head(10)
+# print(overrated_anime)
+
+# Decision Making 
+'''Q9.If you are Netflix:Which type of anime should you invest in?
+(Use data to justify)
+Q10.Find:Ideal episode length range:
+where rating is highest'''
+
+# Question 9
+
+# Pro Level 
+'''Q10.Segment anime into categories:
+Low popularity
+Medium popularity
+High popularity
+Based on members
+Q11.Build logic:Recommend top 5 anime for:
+new users (high rating + moderate episodes)'''
+
+# Question 10
+def popularity_category(members):
+    if members < 5000:
+        return "Low"
+    elif members <= 100000:
+        return "Medium"
+    else:
+        return "High"
+
+df["popularity"] = df["members"].apply(popularity_category)
+
+print(df[["name", "members", "popularity"]])
