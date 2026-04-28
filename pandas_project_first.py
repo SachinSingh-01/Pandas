@@ -217,14 +217,17 @@ Q11.Build logic:Recommend top 5 anime for:
 new users (high rating + moderate episodes)'''
 
 # Question 10
-def popularity_category(members):
-    if members < 5000:
-        return "Low"
-    elif members <= 100000:
-        return "Medium"
-    else:
-        return "High"
+# def popularity_category(members):
+#     if members < 5000:
+#         return "Low"
+#     elif members <= 100000:
+#         return "Medium"
+#     else:
+#         return "High"
+# df["popularity"] = df["members"].apply(popularity_category)
+# print(df[["name", "members", "popularity"]])
 
-df["popularity"] = df["members"].apply(popularity_category)
-
-print(df[["name", "members", "popularity"]])
+# Question 11
+df["episodes"] = pd.to_numeric(df["episodes"], errors="coerce")
+top_5=df[(df["rating"]>=8.5) & (df["episodes"].between(10,50))].sort_values(by="rating",ascending=False).head(5)
+print(top_5[["name","rating","episodes"]])
