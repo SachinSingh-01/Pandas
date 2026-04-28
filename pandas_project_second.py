@@ -27,9 +27,17 @@ year
 month
 Q5.Clean:duration column
 Extract:
-numeric value
-unit (minutes / seasons)
+numeric value unit (minutes / seasons)
 Q6.Handle:Missing values in country, rating, director'''
 # Question 4
-# df["datetime"]=df.to_datetime(df["date_added"])
-# print(df)
+df["date_added"]=pd.to_datetime(df["date_added"],errors="coerce")
+extract_year=df["date_added"].dt.year.sort_values().value_counts()
+extract_month=df["date_added"].dt.month.sort_values().value_counts()
+print(extract_year)
+print(extract_month)
+
+# Question 5
+df["duration_num"] = df["duration"].str.extract(r"(\d+)")
+df["duration_num"] = pd.to_numeric(df["duration_num"])
+df["duration_unit"] = df["duration"].str.extract(r"([a-zA-Z]+)")
+print(df)
