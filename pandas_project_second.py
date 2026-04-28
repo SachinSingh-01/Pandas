@@ -16,9 +16,9 @@ Q3.Find:Year-wise content added trend
 # print(top_most_content)
 
 # Question 3
-df["date_added"]=pd.to_datetime(df["date_added"],errors="coerce")
-year_trend=df["date_added"].dt.year.value_counts().sort_values()
-print(year_trend)
+# df["date_added"]=pd.to_datetime(df["date_added"],errors="coerce")
+# year_trend=df["date_added"].dt.year.value_counts().sort_values()
+# print(year_trend)
 
 # Data Cleaning + Transformation
 '''Q4.Clean:date_added column → convert to datetime
@@ -30,14 +30,20 @@ Extract:
 numeric value unit (minutes / seasons)
 Q6.Handle:Missing values in country, rating, director'''
 # Question 4
-df["date_added"]=pd.to_datetime(df["date_added"],errors="coerce")
-extract_year=df["date_added"].dt.year.sort_values().value_counts()
-extract_month=df["date_added"].dt.month.sort_values().value_counts()
-print(extract_year)
-print(extract_month)
+# df["date_added"]=pd.to_datetime(df["date_added"],errors="coerce")
+# extract_year=df["date_added"].dt.year.sort_values().value_counts()
+# extract_month=df["date_added"].dt.month.sort_values().value_counts()
+# print(extract_year)
+# print(extract_month)
 
 # Question 5
-df["duration_num"] = df["duration"].str.extract(r"(\d+)")
-df["duration_num"] = pd.to_numeric(df["duration_num"])
-df["duration_unit"] = df["duration"].str.extract(r"([a-zA-Z]+)")
-print(df)
+# df["duration_num"] = df["duration"].str.extract(r"(\d+)")
+# df["duration_num"] = pd.to_numeric(df["duration_num"],errors="coerce")
+# df["duration_unit"] = df["duration"].str.extract(r"([a-zA-Z]+)")
+# print(df)
+
+# Question 6
+df["rating"]=df["rating"].fillna(df["rating"].mode()[0])
+df["country"] = df["country"].fillna("Unknown")
+df["director"]=df["director"].fillna("Not available")
+print(df.isna().sum())
