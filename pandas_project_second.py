@@ -43,7 +43,29 @@ Q6.Handle:Missing values in country, rating, director'''
 # print(df)
 
 # Question 6
-df["rating"]=df["rating"].fillna(df["rating"].mode()[0])
-df["country"] = df["country"].fillna("Unknown")
-df["director"]=df["director"].fillna("Not available")
-print(df.isna().sum())
+# df["rating"]=df["rating"].fillna(df["rating"].mode()[0])
+# df["country"] = df["country"].fillna("Unknown")
+# df["director"]=df["director"].fillna("Not available")
+# print(df.isna().sum())
+
+# Analytical Thinking
+'''Q7.Find:Which year had the highest content addition
+Q8.Find:Average duration of Movies
+Q9.Find:Distribution of ratings (TV-MA, PG, etc.)'''
+
+# Question 7
+df["date_added"]=pd.to_datetime(df["date_added"],errors="coerce")
+df["year"]=df["date_added"].dt.year
+year_count=df["year"].value_counts()
+high_content_addition=year_count.idxmax()
+print(high_content_addition)
+
+# Question 8
+df["duration_num"] = df["duration"].str.extract(r"(\d+)")
+df["duration_num"] = pd.to_numeric(df["duration_num"], errors="coerce")
+average_duration_movies=df[df["type"]=="Movie"]["duration_num"].mean()
+print(average_duration_movies)
+
+# Question 9
+dis_rating=df["rating"].value_counts()
+print(dis_rating)
