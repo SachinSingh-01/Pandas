@@ -54,18 +54,47 @@ Q8.Find:Average duration of Movies
 Q9.Find:Distribution of ratings (TV-MA, PG, etc.)'''
 
 # Question 7
-df["date_added"]=pd.to_datetime(df["date_added"],errors="coerce")
-df["year"]=df["date_added"].dt.year
-year_count=df["year"].value_counts()
-high_content_addition=year_count.idxmax()
-print(high_content_addition)
+# df["date_added"]=pd.to_datetime(df["date_added"],errors="coerce")
+# df["year"]=df["date_added"].dt.year
+# year_count=df["year"].value_counts()
+# high_content_addition=year_count.idxmax()
+# print(high_content_addition)
 
 # Question 8
-df["duration_num"] = df["duration"].str.extract(r"(\d+)")
-df["duration_num"] = pd.to_numeric(df["duration_num"], errors="coerce")
-average_duration_movies=df[df["type"]=="Movie"]["duration_num"].mean()
-print(average_duration_movies)
+# df["duration_num"] = df["duration"].str.extract(r"(\d+)")
+# df["duration_num"] = pd.to_numeric(df["duration_num"], errors="coerce")
+# average_duration_movies=df[df["type"]=="Movie"]["duration_num"].mean()
+# print(average_duration_movies)
 
 # Question 9
-dis_rating=df["rating"].value_counts()
-print(dis_rating)
+# dis_rating=df["rating"].value_counts()
+# print(dis_rating)
+
+# Advanced Analysis 
+'''Q10.Find:Top 5 directors with most content
+Q11.Find:Top 5 actors appearing most
+(Hint: cast column → multiple values)
+Q12.Find:Which country produces highest rated content'''
+
+# Question 10
+# df["director"]=df["director"].fillna("Not available")
+# df["director"]=df["director"].str.split(",")
+# df=df.explode("director")
+# df = df.reset_index(drop=True)
+# df["director"]=df["director"].str.strip()
+# top_director=df["director"].value_counts().head(5)
+# print(top_director)
+
+# Question 11
+df = df.dropna(subset=["cast"])
+df["cast"]=df["cast"].str.split(",")
+df=df.explode("cast")
+df["cast"]=df["cast"].str.strip()
+df = df.reset_index(drop=True)
+top_appear_actor=df["cast"].value_counts().head(5)
+print(top_appear_actor)
+
+# Question 12
+df["country"]=df["country"].fillna("Not present")
+country_high_content=df.sort_values(by=["country"],ascending=False)["rating"].mean().idxmax()
+print(country_high_content)
