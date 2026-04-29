@@ -96,5 +96,9 @@ print(top_appear_actor)
 
 # Question 12
 df["country"]=df["country"].fillna("Not present")
-country_high_content=df.sort_values(by=["country"],ascending=False)["rating"].mean().idxmax()
+df["country"]=df["country"].str.split(",")
+df=df.explode("country")
+df["country"]=df["country"].str.strip()
+df = df.reset_index(drop=True)
+country_high_content=df["country"].value_counts()
 print(country_high_content)
