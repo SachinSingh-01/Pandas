@@ -86,19 +86,50 @@ Q12.Find:Which country produces highest rated content'''
 # print(top_director)
 
 # Question 11
-df = df.dropna(subset=["cast"])
-df["cast"]=df["cast"].str.split(",")
-df=df.explode("cast")
-df["cast"]=df["cast"].str.strip()
-df = df.reset_index(drop=True)
-top_appear_actor=df["cast"].value_counts().head(5)
-print(top_appear_actor)
+# df = df.dropna(subset=["cast"])
+# df["cast"]=df["cast"].str.split(",")
+# df=df.explode("cast")
+# df["cast"]=df["cast"].str.strip()
+# df = df.reset_index(drop=True)
+# top_appear_actor=df["cast"].value_counts().head(5)
+# print(top_appear_actor)
 
 # Question 12
-df["country"]=df["country"].fillna("Not present")
-df["country"]=df["country"].str.split(",")
-df=df.explode("country")
-df["country"]=df["country"].str.strip()
-df = df.reset_index(drop=True)
-country_high_content=df["country"].value_counts()
-print(country_high_content)
+# df["country"]=df["country"].fillna("Not present")
+# df["country"]=df["country"].str.split(",")
+# df=df.explode("country")
+# df["country"]=df["country"].str.strip()
+# df = df.reset_index(drop=True)
+# country_high_content=df["country"].value_counts()
+# print(country_high_content)
+
+# Business Insight 
+'''Q13.Answer:
+Is Netflix focusing more on Movies or TV Shows?
+Justify using data
+Q14.Find:
+Trend:Is Netflix adding more content in recent years?
+Q15.Find:Which genre/type is growing fastest'''
+
+# Question 13
+count_movies=df["type"].value_counts()
+print(count_movies)
+df["date_added"]
+
+print("After analysing the type data netflix should be more focused on Movies")
+
+# Question 14
+df["date_added"]=pd.to_datetime(df["date_added"],errors="coerce")
+df["year"]=df["date_added"].dt.year
+year_count=df["year"].value_counts().sort_index()
+print(year_count)
+
+# Question 15
+df["listed_in"]=df["listed_in"].fillna("unknown")
+df["listed_in"]=df["listed_in"].str.split(",")
+df=df.explode("listed_in")
+df["listed_in"]=df["listed_in"].str.strip()
+df["date_added"]=pd.to_datetime(df["date_added"],errors="coerce")
+df["year"]=df["date_added"].dt.year
+genre_count=df.groupby(["year","listed_in"]).size().reset_index(name="count")
+print(genre_count)
