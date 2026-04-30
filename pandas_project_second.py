@@ -112,24 +112,31 @@ Trend:Is Netflix adding more content in recent years?
 Q15.Find:Which genre/type is growing fastest'''
 
 # Question 13
-count_movies=df["type"].value_counts()
-print(count_movies)
-df["date_added"]
-
-print("After analysing the type data netflix should be more focused on Movies")
+counts=df["type"].value_counts()
+movies_count=counts["Movie"]
+tvshow_count=counts["TV Show"]
+print(movies_count)
+print(tvshow_count)
+if (movies_count)>(tvshow_count):
+    print("Movie is more")
+else:
+    print("Tv_show is more")
+grouping=df.groupby(["release_year","type"]).size()
+print(grouping)
+print("Movies count is significantly higher than TV Shows, indicating that Netflix focuses more on Movies. However, recent trends show TV Shows are also increasing.")
 
 # Question 14
-df["date_added"]=pd.to_datetime(df["date_added"],errors="coerce")
-df["year"]=df["date_added"].dt.year
-year_count=df["year"].value_counts().sort_index()
-print(year_count)
+# df["date_added"]=pd.to_datetime(df["date_added"],errors="coerce")
+# df["year"]=df["date_added"].dt.year
+# year_count=df["year"].value_counts().sort_index()
+# print(year_count)
 
 # Question 15
-df["listed_in"]=df["listed_in"].fillna("unknown")
-df["listed_in"]=df["listed_in"].str.split(",")
-df=df.explode("listed_in")
-df["listed_in"]=df["listed_in"].str.strip()
-df["date_added"]=pd.to_datetime(df["date_added"],errors="coerce")
-df["year"]=df["date_added"].dt.year
-genre_count=df.groupby(["year","listed_in"]).size().reset_index(name="count")
-print(genre_count)
+# df["listed_in"]=df["listed_in"].fillna("unknown")
+# df["listed_in"]=df["listed_in"].str.split(",")
+# df=df.explode("listed_in")
+# df["listed_in"]=df["listed_in"].str.strip()
+# df["date_added"]=pd.to_datetime(df["date_added"],errors="coerce")
+# df["year"]=df["date_added"].dt.year
+# genre_count=df.groupby(["year","listed_in"]).size().reset_index(name="count")
+# print(genre_count)
