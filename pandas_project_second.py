@@ -112,18 +112,18 @@ Trend:Is Netflix adding more content in recent years?
 Q15.Find:Which genre/type is growing fastest'''
 
 # Question 13
-counts=df["type"].value_counts()
-movies_count=counts["Movie"]
-tvshow_count=counts["TV Show"]
-print(movies_count)
-print(tvshow_count)
-if (movies_count)>(tvshow_count):
-    print("Movie is more")
-else:
-    print("Tv_show is more")
-grouping=df.groupby(["release_year","type"]).size()
-print(grouping)
-print("Movies count is significantly higher than TV Shows, indicating that Netflix focuses more on Movies. However, recent trends show TV Shows are also increasing.")
+# counts=df["type"].value_counts()
+# movies_count=counts["Movie"]
+# tvshow_count=counts["TV Show"]
+# print(movies_count)
+# print(tvshow_count)
+# if (movies_count)>(tvshow_count):
+#     print("Movie is more")
+# else:
+#     print("Tv_show is more")
+# grouping=df.groupby(["release_year","type"]).size()
+# print(grouping)
+# print("Movies count is significantly higher than TV Shows, indicating that Netflix focuses more on Movies. However, recent trends show TV Shows are also increasing.")
 
 # Question 14
 # df["date_added"]=pd.to_datetime(df["date_added"],errors="coerce")
@@ -140,3 +140,40 @@ print("Movies count is significantly higher than TV Shows, indicating that Netfl
 # df["year"]=df["date_added"].dt.year
 # genre_count=df.groupby(["year","listed_in"]).size().reset_index(name="count")
 # print(genre_count)
+
+# PRO LEVEL 
+'''Q16.Create:New column → content_age
+current_year - release_year
+Then analyze:Are newer or older shows more common?
+Q17.Build:Recommendation logic:
+Find top content for:
+new users
+based on rating + recent release
+Q18.Segment:Content into:
+Short
+Medium
+Long
+Based on duration'''
+
+# Question 16
+df["content_age"]=2026-(df["release_year"])
+print(df)
+df["age_group"]=df["content_age"].apply(lambda x: "new" if  x<=5 else "old")
+count=df["age_group"].value_counts()
+print(count)
+print("After analysing the dataset the old_age people more than the new_ager")
+
+# Question 17
+
+# # Question 18
+df["duration_num"] = df["duration"].str.extract(r"(\d+)").astype(float)
+def segment(x):
+    if x<60:
+        return "Short"
+    elif x<=120:
+        return "Medium"
+    else: 
+        return "Long"
+count=df["duration_category"]=df["duration_num"].apply(segment)
+counting=df["duration_category"].value_counts()
+print(counting)
