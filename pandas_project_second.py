@@ -164,6 +164,11 @@ print(count)
 print("After analysing the dataset the old_age people more than the new_ager")
 
 # Question 17
+df["rating"]=pd.to_numeric(df["rating"],errors="coerce")
+df["score"]=df["rating"]+ (2026-df["release_year"]*(-0.1))
+after_sorting=df.sort_values(by="score",ascending= False)
+print(after_sorting)
+
 
 # # Question 18
 df["duration_num"] = df["duration"].str.extract(r"(\d+)").astype(float)
