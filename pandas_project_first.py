@@ -27,3 +27,14 @@ df["rating"]=df["rating"].mode()[0]
 df["duration_num"]=df["duration"].str.extract(r"(\d+)").astype(float)
 print(df)
 
+
+count=df["type"].value_counts()
+movies_count=count["Movie"]
+tv_count=count["TV Show"]
+print(movies_count)
+print(tv_count)
+if movies_count>tv_count:
+    print("Movies is more than tv_show")
+else:
+    print("TV show is more than movies")
+
