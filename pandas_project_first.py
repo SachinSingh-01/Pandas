@@ -38,3 +38,13 @@ if movies_count>tv_count:
 else:
     print("TV show is more than movies")
 
+# year_trend=
+
+df["country"]=df["country"].fillna("Not available")
+df["country"]=df["country"].str.split(",")
+df=df.explode("country")
+df=df.reset_index(drop=True)
+df["country"]=df["country"].str.strip()
+top_country=df["country"].value_counts().head(20)
+print(top_country)
+
