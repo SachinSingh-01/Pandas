@@ -37,16 +37,16 @@ Q6.Handle:Missing values in country, rating, director'''
 # print(extract_month)
 
 # Question 5
-# df["duration_num"] = df["duration"].str.extract(r"(\d+)")
-# df["duration_num"] = pd.to_numeric(df["duration_num"],errors="coerce")
-# df["duration_unit"] = df["duration"].str.extract(r"([a-zA-Z]+)")
-# print(df)
+df["duration_num"] = df["duration"].str.extract(r"(\d+)")
+df["duration_num"] = pd.to_numeric(df["duration_num"],errors="coerce")
+df["duration_unit"] = df["duration"].str.extract(r"([a-zA-Z]+)")
+print(df)
 
 # Question 6
-# df["rating"]=df["rating"].fillna(df["rating"].mode()[0])
-# df["country"] = df["country"].fillna("Unknown")
-# df["director"]=df["director"].fillna("Not available")
-# print(df.isna().sum())
+df["rating"]=df["rating"].fillna(df["rating"].mode()[0])
+df["country"] = df["country"].fillna("Unknown")
+df["director"]=df["director"].fillna("Not available")
+print(df.isna().sum())
 
 # Analytical Thinking
 '''Q7.Find:Which year had the highest content addition
@@ -54,21 +54,21 @@ Q8.Find:Average duration of Movies
 Q9.Find:Distribution of ratings (TV-MA, PG, etc.)'''
 
 # Question 7
-# df["date_added"]=pd.to_datetime(df["date_added"],errors="coerce")
-# df["year"]=df["date_added"].dt.year
-# year_count=df["year"].value_counts()
-# high_content_addition=year_count.idxmax()
+df["date_added"]=pd.to_datetime(df["date_added"],errors="coerce")
+df["year"]=df["date_added"].dt.year
+year_count=df["year"].value_counts()
+high_content_addition=year_count.idxmax()
 # print(high_content_addition)
 
 # Question 8
-# df["duration_num"] = df["duration"].str.extract(r"(\d+)")
-# df["duration_num"] = pd.to_numeric(df["duration_num"], errors="coerce")
-# average_duration_movies=df[df["type"]=="Movie"]["duration_num"].mean()
-# print(average_duration_movies)
+df["duration_num"] = df["duration"].str.extract(r"(\d+)")
+df["duration_num"] = pd.to_numeric(df["duration_num"], errors="coerce")
+average_duration_movies=df[df["type"]=="Movie"]["duration_num"].mean()
+print(average_duration_movies)
 
 # Question 9
-# dis_rating=df["rating"].value_counts()
-# print(dis_rating)
+dis_rating=df["rating"].value_counts()
+print(dis_rating)
 
 # Advanced Analysis 
 '''Q10.Find:Top 5 directors with most content
@@ -77,31 +77,31 @@ Q11.Find:Top 5 actors appearing most
 Q12.Find:Which country produces highest rated content'''
 
 # Question 10
-# df["director"]=df["director"].fillna("Not available")
-# df["director"]=df["director"].str.split(",")
-# df=df.explode("director")
-# df = df.reset_index(drop=True)
-# df["director"]=df["director"].str.strip()
-# top_director=df["director"].value_counts().head(5)
-# print(top_director)
+df["director"]=df["director"].fillna("Not available")
+df["director"]=df["director"].str.split(",")
+df=df.explode("director")
+df = df.reset_index(drop=True)
+df["director"]=df["director"].str.strip()
+top_director=df["director"].value_counts().head(5)
+print(top_director)
 
 # Question 11
-# df = df.dropna(subset=["cast"])
-# df["cast"]=df["cast"].str.split(",")
-# df=df.explode("cast")
-# df["cast"]=df["cast"].str.strip()
-# df = df.reset_index(drop=True)
-# top_appear_actor=df["cast"].value_counts().head(5)
-# print(top_appear_actor)
+df = df.dropna(subset=["cast"])
+df["cast"]=df["cast"].str.split(",")
+df=df.explode("cast")
+df["cast"]=df["cast"].str.strip()
+df = df.reset_index(drop=True)
+top_appear_actor=df["cast"].value_counts().head(5)
+print(top_appear_actor)
 
 # Question 12
-# df["country"]=df["country"].fillna("Not present")
-# df["country"]=df["country"].str.split(",")
-# df=df.explode("country")
-# df["country"]=df["country"].str.strip()
-# df = df.reset_index(drop=True)
-# country_high_content=df["country"].value_counts()
-# print(country_high_content)
+df["country"]=df["country"].fillna("Not present")
+df["country"]=df["country"].str.split(",")
+df=df.explode("country")
+df["country"]=df["country"].str.strip()
+df = df.reset_index(drop=True)
+country_high_content=df["country"].value_counts()
+print(country_high_content)
 
 # Business Insight 
 '''Q13.Answer:
@@ -112,34 +112,34 @@ Trend:Is Netflix adding more content in recent years?
 Q15.Find:Which genre/type is growing fastest'''
 
 # Question 13
-# counts=df["type"].value_counts()
-# movies_count=counts["Movie"]
-# tvshow_count=counts["TV Show"]
-# print(movies_count)
-# print(tvshow_count)
-# if (movies_count)>(tvshow_count):
-#     print("Movie is more")
-# else:
-#     print("Tv_show is more")
-# grouping=df.groupby(["release_year","type"]).size()
-# print(grouping)
-# print("Movies count is significantly higher than TV Shows, indicating that Netflix focuses more on Movies. However, recent trends show TV Shows are also increasing.")
+counts=df["type"].value_counts()
+movies_count=counts["Movie"]
+tvshow_count=counts["TV Show"]
+print(movies_count)
+print(tvshow_count)
+if (movies_count)>(tvshow_count):
+    print("Movie is more")
+else:
+    print("Tv_show is more")
+grouping=df.groupby(["release_year","type"]).size()
+print(grouping)
+print("Movies count is significantly higher than TV Shows, indicating that Netflix focuses more on Movies. However, recent trends show TV Shows are also increasing.")
 
 # Question 14
-# df["date_added"]=pd.to_datetime(df["date_added"],errors="coerce")
-# df["year"]=df["date_added"].dt.year
-# year_count=df["year"].value_counts().sort_index()
-# print(year_count)
+df["date_added"]=pd.to_datetime(df["date_added"],errors="coerce")
+df["year"]=df["date_added"].dt.year
+year_count=df["year"].value_counts().sort_index()
+print(year_count)
 
 # Question 15
-# df["listed_in"]=df["listed_in"].fillna("unknown")
-# df["listed_in"]=df["listed_in"].str.split(",")
-# df=df.explode("listed_in")
-# df["listed_in"]=df["listed_in"].str.strip()
-# df["date_added"]=pd.to_datetime(df["date_added"],errors="coerce")
-# df["year"]=df["date_added"].dt.year
-# genre_count=df.groupby(["year","listed_in"]).size().reset_index(name="count")
-# print(genre_count)
+df["listed_in"]=df["listed_in"].fillna("unknown")
+df["listed_in"]=df["listed_in"].str.split(",")
+df=df.explode("listed_in")
+df["listed_in"]=df["listed_in"].str.strip()
+df["date_added"]=pd.to_datetime(df["date_added"],errors="coerce")
+df["year"]=df["date_added"].dt.year
+genre_count=df.groupby(["year","listed_in"]).size().reset_index(name="count")
+print(genre_count)
 
 # PRO LEVEL 
 '''Q16.Create:New column → content_age
