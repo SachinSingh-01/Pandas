@@ -38,7 +38,10 @@ if movies_count>tv_count:
 else:
     print("TV show is more than movies")
 
-# year_trend=
+# df["release_year"]=df["release_year"].fillna("Not available")
+# df["release_year"]=df["release_year"].str.split(",")
+# df=df.explode("release_year")
+# df["release_year"]
 
 df["country"]=df["country"].fillna("Not available")
 df["country"]=df["country"].str.split(",")
@@ -48,3 +51,14 @@ df["country"]=df["country"].str.strip()
 top_country=df["country"].value_counts().head(20)
 print(top_country)
 
+df["listed_in"]=df["listed_in"].fillna("Not available")
+df["listed_in"]=df["listed_in"].str.split(",")
+df=df.explode("listed_in")
+df=df.reset_index(drop=True)
+df["listed_in"]=df["listed_in"].str.strip()
+top_genre=df["listed_in"].value_counts().head(10)
+print("Top genre")
+print(top_genre)
+
+avarage_duration=df["duration"].mean()
+print(avarage_duration)
